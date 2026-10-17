@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ConstExpr/ConstExpr.vcxproj" Id="1c6aac15-e2b3-4bf9-90eb-7817d7542695" />
+</Solution>

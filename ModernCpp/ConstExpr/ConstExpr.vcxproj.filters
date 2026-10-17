@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Lessons">
+      <UniqueIdentifier>{7B1E2C55-3D7A-4E2B-9C61-5A0F3B8D4E21}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConstExpr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TutorialConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lesson.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L01_Cpp11_Basics.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L02_Cpp11_LiteralTypes.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L03_Cpp14_RelaxedConstexpr.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L04_Cpp17_IfConstexpr.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L05_Cpp17_LambdasAndInline.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L06_Cpp20_Consteval.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L07_Cpp20_Constinit.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L08_Cpp20_IsConstantEvaluated.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L09_Cpp20_ConstexprAllocation.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L10_Cpp20_VirtualTryUnion.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L11_Cpp23_IfConsteval.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L12_Cpp23_RelaxedRules.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L13_Pitfalls.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <ClInclude Include="lessons\L14_Capstone.h">
+      <Filter>Header Files\Lessons</Filter>
+    </ClInclude>
+    <None Include="README.md" />
+  </ItemGroup>
+</Project>
