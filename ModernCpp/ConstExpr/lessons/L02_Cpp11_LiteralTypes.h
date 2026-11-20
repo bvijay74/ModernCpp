@@ -80,14 +80,14 @@ static_assert(kA.scaled(3).y() == 6.0, "");
 // A constexpr object is const: a non-const member function (set_x) can't be
 // called on it.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_set_x() { kA.set_x(5.0); }
+void error_demo_set_x() { kA.set_x(5.0); }
 #endif
 
 // ERROR DEMO [L02-E3]  fails in: every standard
 // The constructor is constexpr, but its ARGUMENT comes from a non-constexpr
 // function, so the object can't be built at compile time.
 #if TUTORIAL_FORCE_ERRORS
-inline double runtime_coordinate() { return 2.0; }
+double runtime_coordinate() { return 2.0; }
 constexpr Point kRuntimePoint(runtime_coordinate(), 0.0);
 #endif
 
@@ -95,7 +95,7 @@ constexpr Point kRuntimePoint(runtime_coordinate(), 0.0);
 // A constexpr function called with a non-constant argument is fine at runtime,
 // but its result can't initialise a constexpr variable.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_scaled()
+void error_demo_scaled()
 {
     double scale = 2.0;
     constexpr Point kScaled = kA.scaled(scale);

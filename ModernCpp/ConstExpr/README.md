@@ -20,6 +20,76 @@ Every `static_assert` is a proof: if the project builds, the compiler computed t
 | L13 | C++20 | pitfalls, compiler limits, debugging tips |
 | L14 | C++20 | capstone: CRC-32 table, string switch, 88 piano keys |
 
+## The concept and how it evolved
+
+`constexpr` lets the compiler compute values while it compiles the program.
+Each standard widened what can run at compile time: from one-line formulas in
+C++11 to containers, virtual calls and `std::unique_ptr` in C++23.
+
+**C++11: the strict start (L01, L02)**
+- A `constexpr` variable's value is known at compile time (and it is const).
+  A plain `const` variable may hold a runtime value; only `const` integers get
+  the old C++98 "usable at compile time" rule.
+- A `constexpr` function *may* run at compile time when its arguments are
+  constants; otherwise it runs normally.
+- The body must be a single `return`: `?:` for branches, recursion for loops.
+- Your own classes work at compile time if they are *literal types*: a
+  `constexpr` constructor with an empty body, a trivial destructor and literal
+  members. `constexpr` member functions are implicitly `const`, so nothing can
+  be modified.
+
+**C++14: functions that look like normal code (L03)**
+- Local variables, loops, `if`/`switch` and several `return`s are allowed.
+- Objects created during the evaluation may be modified; `constexpr` member
+  functions are no longer implicitly `const`.
+- Variable templates: `template <class T> constexpr T pi = ...;`
+- Still not allowed: uninitialised locals, `static` locals, `goto`, `try`,
+  virtual calls, `new`/`delete`.
+
+**C++17: compile-time branching (L04, L05)**
+- `if constexpr` picks a branch at compile time. Inside a template the other
+  branch is discarded and never instantiated, which replaces most tag dispatch
+  and SFINAE.
+- Lambdas are `constexpr` automatically when they can be.
+- `inline constexpr` gives one object for the whole program, and `static
+  constexpr` members no longer need an out-of-class definition.
+- Much more of the library is `constexpr`: `std::array`, `std::string_view`,
+  `std::clamp`, ...
+
+**C++20: the big expansion (L06 - L10)**
+- `consteval`: an *immediate* function that **must** run at compile time;
+  every call has to be a constant.
+- `constinit`: initialised at compile time but changeable at runtime, which
+  avoids the static initialisation order problem.
+- `std::is_constant_evaluated()`: one function, separate compile-time and
+  runtime paths.
+- Transient allocation: `new`/`delete`, `std::vector`, `std::string` and most
+  algorithms work at compile time, as long as all memory is freed before the
+  evaluation ends.
+- Also allowed: virtual calls, `dynamic_cast`, `try`/`catch` blocks (but no
+  throwing), changing a union's active member, uninitialised locals, and class
+  types or floating-point values as template parameters.
+
+**C++23: closing the gaps (L11, L12)**
+- `if consteval { } else { }` replaces `is_constant_evaluated()`, and its
+  compile-time branch may call `consteval` functions with the function's own
+  parameters.
+- Consteval propagation: a template or lambda that calls a `consteval`
+  function with its parameter becomes `consteval` itself.
+- `static constexpr` locals inside `constexpr` functions; `static` variables
+  and `goto` may appear as long as evaluation never reaches them.
+- More library: `constexpr` `std::unique_ptr`, `std::bitset`, integer
+  `std::to_chars`, and fully `constexpr` `std::optional` / `std::variant`.
+
+**Pitfalls (L13)**
+- `constexpr` on a function means *may*, not *must*. Force compile-time
+  evaluation with a `constexpr` variable, `static_assert`, a template argument
+  or `consteval`.
+- Undefined behaviour (overflow, out-of-bounds access) is a compile error
+  during constant evaluation, so `static_assert` tests catch it.
+- Compilers limit recursion depth and evaluation steps, and floating-point
+  results still need a tolerance.
+
 ## Choosing the lessons: the compiler standard
 
 Project Properties > C/C++ > Language > C++ Language Standard decides which

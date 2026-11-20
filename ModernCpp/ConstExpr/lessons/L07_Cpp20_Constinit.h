@@ -89,7 +89,7 @@ inline int next_id()
 // ERROR DEMO [L07-E4]  fails in: every standard
 // An ordinary local variable has automatic storage duration: not allowed.
 #if TUTORIAL_FORCE_ERRORS
-inline int error_demo_local()
+int error_demo_local()
 {
     constinit int x = 1;
     return x;

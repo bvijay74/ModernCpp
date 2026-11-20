@@ -89,7 +89,7 @@ static_assert(ids_unique(kCommands), "two commands have the same id");
 // ERROR DEMO [L14-E1]  fails in: every standard
 // A command table with a duplicate entry fails the compile-time check.
 #if TUTORIAL_FORCE_ERRORS
-inline constexpr std::array kBadCommands{Command{"play", "a"}, Command{"stop", "b"}, Command{"play", "c"}};
+constexpr std::array kBadCommands{Command{"play", "a"}, Command{"stop", "b"}, Command{"play", "c"}};
 static_assert(ids_unique(kBadCommands), "two commands have the same id");
 #endif
 
@@ -189,13 +189,13 @@ static_assert(key(key_number("A0")).frequency == 27.5);
 // ERROR DEMO [L14-E2]  fails in: every standard
 // There is no key 89.
 #if TUTORIAL_FORCE_ERRORS
-inline constexpr double kNoSuchKey = key(89).frequency;
+constexpr double kNoSuchKey = key(89).frequency;
 #endif
 
 // ERROR DEMO [L14-E3]  fails in: every standard
 // "H4" is the German name for B4 - not in our table.
 #if TUTORIAL_FORCE_ERRORS
-inline constexpr int kGermanB = key_number("H4");
+constexpr int kGermanB = key_number("H4");
 #endif
 
 // -----------------------------------------------------------------------------

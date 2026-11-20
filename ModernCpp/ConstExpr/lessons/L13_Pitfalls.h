@@ -129,7 +129,7 @@ constexpr const char* kNoteName = "A4";
 // ERROR DEMO [L13-E4]  fails in: every standard
 // kNoteName is a constant pointer: it can't be changed to point elsewhere.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_repoint() { kNoteName = "B4"; }
+void error_demo_repoint() { kNoteName = "B4"; }
 #endif
 
 // Only addresses of objects with STATIC storage duration are constants.
@@ -139,7 +139,7 @@ constexpr int* kSampleRatePtr = &g_sampleRate;   // OK: the address is fixed
 // ERROR DEMO [L13-E5]  fails in: every standard
 // A local variable lives on the stack: its address differs on every call.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_local_address()
+void error_demo_local_address()
 {
     int local = 1;
     constexpr int* p = &local;

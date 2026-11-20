@@ -175,7 +175,7 @@ constexpr auto kNoSuchField = get<3>(kA4);
 // ERROR DEMO [L04-E2]  fails in: every standard
 // The if constexpr condition must be a constant expression.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_runtime_condition()
+void error_demo_runtime_condition()
 {
     int n = 3;
     if constexpr (n > 2) {

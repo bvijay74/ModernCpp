@@ -4,4 +4,5 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="ConstExpr/ConstExpr.vcxproj" Id="1c6aac15-e2b3-4bf9-90eb-7817d7542695" />
+  <Project Path="MoveSemantics/MoveSemantics.vcxproj" Id="7e0df3fc-038d-4a6b-8382-18b070db243d" />
 </Solution>

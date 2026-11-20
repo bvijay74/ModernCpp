@@ -44,7 +44,7 @@ constexpr int kNine = square(3);
 // x is a runtime parameter, so square(x) can't be evaluated by the compiler.
 // The same call with square_constexpr(x) would be fine.
 #if TUTORIAL_FORCE_ERRORS
-inline int runtime_square(int x) { return square(x); }
+int runtime_square(int x) { return square(x); }
 #endif
 
 // ERROR DEMO [L06-E2]  fails in: every standard
@@ -58,7 +58,7 @@ constexpr int twice_square(int x) { return square(x) * 2; }
 // ERROR DEMO [L06-E3]  fails in: every standard
 // Taking the address of a consteval function and keeping it for runtime.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_address()
+void error_demo_address()
 {
     auto fn = &square;
     (void)fn;
@@ -93,7 +93,7 @@ static_assert(kMiddleC.value() == 60);
 // ERROR DEMO [L06-E4]  fails in: every standard
 // 128 is out of range: the constructor reaches the throw.
 #if TUTORIAL_FORCE_ERRORS
-inline std::string error_demo_note() { return play(128); }
+std::string error_demo_note() { return play(128); }
 #endif
 
 // -----------------------------------------------------------------------------

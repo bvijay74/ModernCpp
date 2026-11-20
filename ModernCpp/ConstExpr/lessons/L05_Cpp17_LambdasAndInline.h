@@ -64,7 +64,7 @@ static_assert(accumulate_n(4, [](int i) { return i * 10; }) == 60);
 // ERROR DEMO [L05-E1]  fails in: every standard
 // A closure that captures a runtime variable isn't a constant.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_capture()
+void error_demo_capture()
 {
     int runtime = 3;
     constexpr auto add = [runtime](int v) { return v + runtime; };
@@ -125,7 +125,7 @@ static_assert(kTitle.substr(0, 9) == "constexpr");
 // ERROR DEMO [L05-E4]  fails in: every standard
 // A constexpr string_view is const; remove_prefix() modifies it.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_remove_prefix() { kTitle.remove_prefix(1); }
+void error_demo_remove_prefix() { kTitle.remove_prefix(1); }
 #endif
 
 constexpr std::size_t count_char(std::string_view s, char c)

@@ -127,7 +127,7 @@ constexpr int kDivZero = 100 / (kMidiChord[0] - 60);
 // A constexpr function may contain non-constexpr code on paths that are not
 // taken. Only the path actually evaluated has to be constant.
 #if TUTORIAL_FORCE_ERRORS
-inline int not_constexpr() { return 7; }
+int not_constexpr() { return 7; }
 constexpr int pick(int v)
 {
     if (v >= 0)
@@ -166,7 +166,7 @@ static_assert(count_multiples(100, 7) == 14, "");
 // Mutation is allowed only on objects created DURING the evaluation.
 // A constexpr object is const forever.
 #if TUTORIAL_FORCE_ERRORS
-inline void error_demo_counter()
+void error_demo_counter()
 {
     constexpr Counter kCounter;
     kCounter.increment();   // increment() is not const

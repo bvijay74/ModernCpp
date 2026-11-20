@@ -31,6 +31,10 @@
 //      "fails in: C++11 only"      an error under that compiler setting, but it
 //                                  compiles cleanly under a newer one. Build it
 //                                  with both settings to see the rule change.
+//
+//    A demo that is a function is deliberately NOT `inline`: MSVC skips
+//    inline functions nobody calls - and the templates they would
+//    instantiate - so their errors would never appear.
 // =============================================================================
 #pragma once
 

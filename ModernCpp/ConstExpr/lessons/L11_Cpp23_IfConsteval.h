@@ -161,7 +161,7 @@ static_assert(kTripleTwice(2) == 18);
 // ERROR DEMO [L11-E4]  fails in: every standard
 // sum_tripled<int> is now consteval, so calling it with runtime values fails.
 #if TUTORIAL_FORCE_ERRORS
-inline int error_demo_runtime_call(int a, int b) { return sum_tripled(a, b); }
+int error_demo_runtime_call(int a, int b) { return sum_tripled(a, b); }
 #endif
 
 // ERROR DEMO [L11-E5]  fails in: every standard
